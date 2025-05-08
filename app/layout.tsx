@@ -1,10 +1,19 @@
+import type { Metadata } from "next";
 import "./globals.css";
-import { ModalProvider } from "@/providers/modal-provider";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import localFont from "next/font/local";
 
-export const metadata = {
-  title: "My E-commerce App",
-  description: "Best shop ever",
+const roboto = localFont({
+  src: "./fonts/RobotoCondensed.woff2",
+  variable: "--font-roboto",
+  weight: "100 900",
+});
+
+export const metadata: Metadata = {
+  title: "Chapter2",
+  description: "Ecommerce app",
 };
 
 export default function RootLayout({
@@ -13,11 +22,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider afterSignOutUrl="/">
+    <ClerkProvider>
       <html lang="en">
-        <body>
-          <ModalProvider />
+        <body className={`${roboto.variable} antialiased`}>
+          <Header />
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
