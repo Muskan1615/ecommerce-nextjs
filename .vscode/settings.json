@@ -1,0 +1,10 @@
+{
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "typescript": "typescriptreact"
+    },
+    "tailwindCSS.experimental.classRegex": [
+      "clsx\\(([^)]*)\\)", // for clsx
+      "cn\\(([^)]*)\\)"    // for custom helpers like `cn()`
+    ]
+  }

@@ -8,7 +8,7 @@ import React from "react";
 export const HeaderMenu = () => {
   const pathname = usePathname();
   return (
-    <div className="max-w-7xl mx-auto px-4 py-2 flex justify-center gap-6 text-sm font-medium uppercase">
+    <div className="max-w-7xl mx-auto px-4 py-1 flex justify-center gap-6 text-sm font-medium uppercase">
       {headerData.map((item) => (
         <Link
           key={item.title}
