@@ -7,7 +7,7 @@ import InstagramIcon from "../public/instagram.svg";
 import WhatsAppIcon from "../public/whatsapp.svg";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { links } from "@/constants";
+import { sidebarLinks } from "@/constants";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -51,13 +51,13 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              {links.map((item) => (
+              {sidebarLinks.map((item) => (
                 <Link
                   onClick={onClose}
                   key={item.title}
                   href={item.href}
                   className={`block p-4 text-xs border-b border-neutral-600 hover:underline font-medium cursor-pointer ${
-                    pathname === item.href ? "text-black" : "text-black"
+                    pathname === item.href && "text-black"
                   }`}
                 >
                   {item.title}
