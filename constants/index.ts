@@ -19,24 +19,27 @@ export const sidebarLinks = [
   { title: "JANUARY'25", href: "/" },
 ];
 
-export const footerLinks = [
-  { title: "About Us", href: "/about" },
+export const importantLinks = [
+  { title: "About Us", href: "/pages/about-us" },
   { title: "FAQs", href: "/pages/faqs" },
-  { title: "Terms & Conditions", href: "/pages/terms" },
-  { title: "Privacy Policy", href: "/pages/privacy" },
+  { title: "Track Your Order", href: "/pages/track-your-order" },
   { title: "Payments", href: "/pages/payments" },
-  {
-    title: "Track Your Order",
-    href: "https://chapter2drip.logisy.tech/track-order/",
-    target: "_blank",
-  },
-  { title: "Info", href: "/pages/info" },
-  { title: "Return and Exchange", href: "/pages/return-and-exchange-policy" },
+];
+
+export const accountLinks = [
+  { title: "Privacy Policy", href: "/pages/privacy" },
+  { title: "Return and Exchange Policy", href: "/pages/return-and-exchange-policy" },
   { title: "Shipping Policy", href: "/pages/shipping-policy" },
-  {
-    title: "Place Your Return & Exchange Request",
-    href: "https://returns.logisy.tech/returns?encipherencode=gAAAAABn...",
-    target: "_blank",
-  },
-  { title: "Blog", href: "/blogs/latest" },
+  { title: "Terms and Conditions", href: "/pages/terms" },
+  { title: "Track Your Order", href: "/pages/track-your-order" },
+];
+
+export const featuredCollections = [
+  { title: "T-Shirts", href: "/collections/t-shirts" },
+  { title: "Shirts", href: "/collections/bowling-shirts" },
+  { title: "Hoodies", href: "/collections/hoodies" },
+  { title: "Bottoms", href: "/collections/bottoms" },
+  { title: "Vests", href: "/collections/vests" },
+  { title: "Caps", href: "/collections/caps" },
+  { title: "Jackets", href: "/collections/jackets" },
 ];

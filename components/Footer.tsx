@@ -1,45 +1,59 @@
 import React from "react";
-import InstagramIcon from "../public/instagram.svg";
-import WhatsAppIcon from "../public/whatsapp.svg";
-import { footerLinks } from "@/constants";
 import Link from "next/link";
+import { importantLinks, accountLinks, featuredCollections } from "@/constants";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-neutral-200 pt-4 space-y-4">
-      <div className="flex justify-center items-center flex-row">
-        <button className="group inline-flex items-center justify-center whitespace-nowrap font-medium transition-all focus-visible:outline-none focus-visible:ring-offset-1 focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-50 h-8 px-3 text-xs text-neutral-900 uppercase mx-auto cursor-pointer">
-          <span className="group-hover:underline underline-offset-4">
-            <span> Scroll To Top </span>
-            <span className="relative -top-0.5">↑</span>
-          </span>
-        </button>
+    <footer className="pt-12 pb-12 bg-neutral-100 border-t border-neutral-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div>
+            <p className="text-sm font-bold uppercase mb-4">
+              Chapter 2 Clothing
+            </p>
+            <p className="text-sm text-neutral-700 leading-relaxed">
+              In the silence, your outfit roars. It tells your story, whispers
+              your secrets, and shouts your dreams. <br />
+              This is CHAPTER 2. This is your beginning. Every thread is a
+              lesson learned, every seam a step taken. What you wear today isn’t
+              just fabric—it’s your past victories, your present hustle, your
+              future ambition.
+            </p>
+          </div>
+          <div>
+            <p className="text-sm font-bold uppercase mb-4">Important Links</p>
+            <ul className="space-y-2 text-sm text-neutral-700">
+              {importantLinks.map(({ title, href }) => (
+                <li key={title}>
+                  <Link href={href}>{title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="text-sm font-bold uppercase mb-4">Account</p>
+            <ul className="space-y-2 text-sm text-neutral-700">
+              {accountLinks.map(({ title, href }) => (
+                <li key={title}>
+                  <Link href={href}>{title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="text-sm font-bold uppercase mb-4">
+              Featured Collections
+            </p>
+            <ul className="space-y-2 text-sm text-neutral-700">
+              {featuredCollections.map(({ title, href }) => (
+                <li key={title}>
+                  <Link href={href}>{title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
-      <div className="py-4">
-        <ul className="flex flex-col sm:flex-row gap-4 items-center justify-center text-xs text-neutral-900">
-          {footerLinks.map((link) => (
-            <li key={link.title}>
-              <a
-                href={link.href}
-                target={link.target ?? "_self"}
-                rel={link.target ? "noopener noreferrer" : ""}
-                className="hover:underline underline-offset-4 decoration-2 decoration-black transition-all"
-              >
-                {link.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="flex justify-center p-8">
-        <Link href="/" className="text-xl font-bold tracking-wide">
-          CIIAPTER2™
-        </Link>
-      </div>
-      {/* <div className="flex justify-center py-4">
-        <InstagramIcon />
-        <WhatsAppIcon />
-      </div> */}
     </footer>
   );
 };

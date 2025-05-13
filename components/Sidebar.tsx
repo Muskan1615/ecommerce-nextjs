@@ -37,7 +37,7 @@ const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
             exit={{ opacity: 0 }}
           />
           <motion.div
-            className="fixed top-0 left-0 z-50 h-full w-[300px] bg-white shadow-md flex flex-col justify-between"
+            className="fixed top-0 left-0 z-50 h-screen w-[300px] bg-white shadow-md flex flex-col justify-between"
             initial={{ x: -300 }}
             animate={{ x: 0 }}
             exit={{ x: -300 }}
