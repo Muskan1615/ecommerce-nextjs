@@ -1,14 +1,18 @@
+import { BestSellers } from "@/components/BestSellers";
 import { BrandStorySection } from "@/components/BrandStorySection";
 import { Container } from "@/components/Container";
-import Hero from "@/components/HeroSection";
+import { Hero } from "@/components/HeroSection";
+import { getBestSellers } from "@/sanity/lib/getBestSellers";
 
-export default function Home() {
+export default async function Home() {
+  const products = await getBestSellers();
   return (
-    <div>
+    <>
+      <Hero />
       <Container>
-        <Hero />
         <BrandStorySection />
+        <BestSellers products={products} />
       </Container>
-    </div>
+    </>
   );
 }

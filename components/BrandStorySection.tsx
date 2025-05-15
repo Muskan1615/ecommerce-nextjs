@@ -1,11 +1,11 @@
 export const BrandStorySection = () => {
   return (
-    <section className="bg-neutral-100 text-black py-16 px-6 text-center">
+    <section className="bg-neutral-100 text-black py-10 text-center">
       <div className="max-w-screen-xl mx-auto">
         <h2 className="text-3xl font-semibold mb-6 uppercase">
           Brand&apos;s Story
         </h2>
-        <p className="leading-relaxed max-w-3xl mx-auto mb-8">
+        <p className="leading-relaxed max-w-7xl mx-auto mb-8">
           In the silence, your outfit roars. It tells your story, whispers your
           secrets, and shouts your dreams. This is CHAPTER 2. This is your
           beginning. Every thread is a lesson learned, every seam a step taken.

@@ -1,11 +1,9 @@
-import { cn } from "@/lib/utils";
 import React from "react";
 
-interface Props {
+export const Container = ({
+  children,
+}: Readonly<{
   children: React.ReactNode;
-  className?: string;
-}
-
-export const Container = ({ children }: Props) => {
-  return <div className={cn("max-w-screen-xl mx-auto")}>{children}</div>;
+}>) => {
+  return <div className="px-4 sm:px-6 lg:px-8">{children}</div>;
 };

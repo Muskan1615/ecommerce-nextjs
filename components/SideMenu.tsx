@@ -1,15 +1,15 @@
 "use client";
 
-import { ChartNoAxesGantt } from "lucide-react";
+import { Text } from "lucide-react";
 import React, { useState } from "react";
-import Sidebar from "./Sidebar";
+import { Sidebar } from "./Sidebar";
 
 export const SideMenu = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
-      <ChartNoAxesGantt
+      <Text
         className="w-5 h-5 cursor-pointer"
         onClick={() => setIsSidebarOpen(true)}
       />

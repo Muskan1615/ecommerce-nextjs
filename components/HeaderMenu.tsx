@@ -1,6 +1,6 @@
 "use client";
 
-import { headerData } from "@/constants";
+import { featuredCollections } from "@/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -9,7 +9,7 @@ export const HeaderMenu = () => {
   const pathname = usePathname();
   return (
     <div className="max-w-7xl mx-auto px-4 py-1 flex justify-center gap-6 text-sm font-medium uppercase">
-      {headerData.map((item) => (
+      {featuredCollections.map((item) => (
         <Link
           key={item.title}
           href={item.href}

@@ -1,22 +1,14 @@
-export const headerData = [
-  { title: "Home", href: "/" },
-  { title: "Men", href: "/men" },
-  { title: "Women", href: "/women" },
-  { title: "Kids", href: "/kids" },
-  { title: "New", href: "/" },
-  { title: "Featured", href: "/" },
-];
-
 export const sidebarLinks = [
-  { title: "DROP 1.0 - THE WASHED PAST COLLECTION", href: "/" },
-  { title: "DROP 2.0 - THE EVERY-body EVERYDAY COLLECTION", href: "/" },
-  { title: "DROP 3.0 - THE NOT SO BASIC COLLECTION", href: "/" },
-  { title: "NEW-CAPSULE 4.0", href: "/" },
-  { title: "SHOP ALL", href: "/" },
-  { title: "SHOP BY CATEGORY", href: "/" },
-  { title: "SHOP BY ACCESSORIES", href: "/" },
-  { title: "SHOP BY PACKS", href: "/" },
-  { title: "JANUARY'25", href: "/" },
+  { title: "Drop 1.0 - The washed past collection", href: "/" },
+  { title: "Drop 2.0 - The every-body everday collection", href: "/" },
+  { title: "Drop 3.0 - The not so basic collection", href: "/" },
+  { title: "New-capsule 4.0", href: "/" },
+  { title: "Freedom 1.0", href: "/" },
+  { title: "Shop all", href: "/" },
+  { title: "Shop by category", href: "/" },
+  { title: "Shop by accessories", href: "/" },
+  { title: "Shop by packs", href: "/" },
+  { title: "January'25", href: "/" },
 ];
 
 export const importantLinks = [
@@ -28,7 +20,10 @@ export const importantLinks = [
 
 export const accountLinks = [
   { title: "Privacy Policy", href: "/pages/privacy" },
-  { title: "Return and Exchange Policy", href: "/pages/return-and-exchange-policy" },
+  {
+    title: "Return and Exchange Policy",
+    href: "/pages/return-and-exchange-policy",
+  },
   { title: "Shipping Policy", href: "/pages/shipping-policy" },
   { title: "Terms and Conditions", href: "/pages/terms" },
   { title: "Track Your Order", href: "/pages/track-your-order" },

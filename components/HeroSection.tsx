@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 import Slider, { CustomArrowProps } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { client } from "../sanity/lib/client";
 import { Slide } from "@/type";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { getHeroSlides } from "@/sanity/lib/getHeroSlides";
 
-function NextArrow(props: CustomArrowProps) {
+function NextArrow(props: Readonly<CustomArrowProps>) {
   const { onClick } = props;
   return (
     <button
@@ -18,12 +18,12 @@ function NextArrow(props: CustomArrowProps) {
       className="absolute bottom-4 right-8 z-10 bg-white/50 hover:bg-white text-black rounded-full p-2"
       aria-label="Next slide"
     >
-      <ChevronRight className="w-6 h-6" />
+      <ChevronRight className="w-5 h-5" />
     </button>
   );
 }
 
-function PrevArrow(props: CustomArrowProps) {
+function PrevArrow(props: Readonly<CustomArrowProps>) {
   const { onClick } = props;
   return (
     <button
@@ -31,24 +31,20 @@ function PrevArrow(props: CustomArrowProps) {
       className="absolute bottom-4 left-8 z-10 bg-white/50 hover:bg-white text-black rounded-full p-2"
       aria-label="Previous slide"
     >
-      <ChevronLeft className="w-6 h-6" />
+      <ChevronLeft className="w-5 h-5" />
     </button>
   );
 }
 
-export default function Hero() {
+export const Hero = () => {
   const [slides, setSlides] = useState<Slide[]>([]);
 
   useEffect(() => {
-    client
-      .fetch(`*[_type == "hero"][0]{ slides[]{_key, image, altText, link} }`)
-      .then((data) => {
-        setSlides(data?.slides ?? []);
-      });
+    getHeroSlides().then(setSlides);
   }, []);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 800,
     slidesToShow: 1,
@@ -63,17 +59,17 @@ export default function Hero() {
 
   if (!slides.length) {
     return (
-      <div className="h-[80vh] flex items-center justify-center">
+      <div className="h-[90vh] flex items-center justify-center">
         Loading...
       </div>
     );
   }
 
   return (
-    <section className="relative w-full overflow-hidden">
+    <section className="relative w-full">
       <Slider {...settings}>
         {slides.map((slide, index) => (
-          <div key={slide._key} className="relative w-full h-[80vh]">
+          <div key={slide._key} className="relative w-full h-[90vh]">
             <Image
               src={urlFor(slide.image).url()}
               alt={slide.altText ?? `Slide ${index + 1}`}
@@ -93,4 +89,4 @@ export default function Hero() {
       </Slider>
     </section>
   );
-}
+};

@@ -88,6 +88,13 @@ export const product = defineType({
         ],
       },
     }),
+    defineField({
+      name: "bestSeller",
+      title: "Best Seller",
+      type: "boolean",
+      initialValue: false,
+      description: "Mark this product as a best seller to show on homepage",
+    }),
   ],
   preview: {
     select: {
