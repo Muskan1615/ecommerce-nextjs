@@ -1,14 +1,11 @@
-"use client";
-
-import React from "react";
-import Link from "next/link";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import { User } from "lucide-react";
-import { ClerkLoaded, SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
-import { SearchBar } from "./SearchBar";
+import Image from "next/image";
+import Link from "next/link";
 import { Cart } from "./Cart";
 import { HeaderMenu } from "./HeaderMenu";
+import { SearchBar } from "./SearchBar";
 import { SideMenu } from "./SideMenu";
-import Image from "next/image";
 
 const Header = () => {
   return (
@@ -30,18 +27,16 @@ const Header = () => {
           <HeaderMenu />
         </div>
         <div className="flex items-center gap-4 sm:gap-6">
-          <ClerkLoaded>
-            <SignedIn>
-              <Link href="/account">
-                <User className="w-5 h-5 cursor-pointer" />
-              </Link>
-            </SignedIn>
-            <SignedOut>
-              <SignInButton forceRedirectUrl="/account">
-                <User className="w-5 h-5 cursor-pointer" />
-              </SignInButton>
-            </SignedOut>
-          </ClerkLoaded>
+          <SignedIn>
+            <Link href="/account">
+              <User className="w-5 h-5 cursor-pointer" />
+            </Link>
+          </SignedIn>
+          <SignedOut>
+            <SignInButton forceRedirectUrl="/account">
+              <User className="w-5 h-5 cursor-pointer" />
+            </SignInButton>
+          </SignedOut>
           <SearchBar />
           <Cart />
         </div>

@@ -1,14 +1,14 @@
 "use client";
 
+import { HeroSection } from "@/sanity.types";
 import { urlFor } from "@/sanity/lib/image";
+import { getHeroSectionSlides } from "@/sanity/lib/queries/getHeroSectionSlides";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Slider, { CustomArrowProps } from "react-slick";
-import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Slide } from "@/type";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { getHeroSlides } from "@/sanity/lib/getHeroSlides";
+import "slick-carousel/slick/slick.css";
 
 function NextArrow(props: Readonly<CustomArrowProps>) {
   const { onClick } = props;
@@ -37,10 +37,14 @@ function PrevArrow(props: Readonly<CustomArrowProps>) {
 }
 
 export const Hero = () => {
-  const [slides, setSlides] = useState<Slide[]>([]);
+  const [slides, setSlides] = useState<HeroSection["slides"]>([]);
 
   useEffect(() => {
-    getHeroSlides().then(setSlides);
+    getHeroSectionSlides().then((fetchedSlides) => {
+      if (fetchedSlides?.length) {
+        setSlides(fetchedSlides);
+      }
+    });
   }, []);
 
   const settings = {
@@ -57,7 +61,7 @@ export const Hero = () => {
     prevArrow: <PrevArrow />,
   };
 
-  if (!slides.length) {
+  if (!slides?.length) {
     return (
       <div className="h-[90vh] flex items-center justify-center">
         Loading...
@@ -70,13 +74,15 @@ export const Hero = () => {
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <div key={slide._key} className="relative w-full h-[90vh]">
-            <Image
-              src={urlFor(slide.image).url()}
-              alt={slide.altText ?? `Slide ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
+            {slide.image && (
+              <Image
+                src={urlFor(slide.image).url()}
+                alt={slide.altText ?? `Slide ${index + 1}`}
+                fill
+                className="object-cover"
+                priority={index === 0}
+              />
+            )}
             {slide.link && (
               <a
                 href={slide.link}

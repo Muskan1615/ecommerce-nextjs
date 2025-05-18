@@ -1,19 +1,19 @@
 "use client";
 
-import React, { FC, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, User, ChevronRight, ChevronDown } from "lucide-react";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-import { sidebarLinks, featuredCollections } from "@/constants";
+import { featuredCollections, sidebarLinks } from "@/constants";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, ChevronRight, User, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FC, useEffect, useState } from "react";
 
-interface SidebarProps {
+interface SideBarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
+export const SideBar: FC<SideBarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
   const [categoryOpen, setCategoryOpen] = useState(false);
 

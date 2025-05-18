@@ -1,6 +1,5 @@
-import React from "react";
+import { accountLinks, featuredCollections, importantLinks } from "@/constants";
 import Link from "next/link";
-import { importantLinks, accountLinks, featuredCollections } from "@/constants";
 
 const Footer = () => {
   return (

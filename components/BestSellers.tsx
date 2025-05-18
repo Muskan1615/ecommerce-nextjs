@@ -1,14 +1,12 @@
 "use client";
 
-import { Product } from "@/type";
+import { Product } from "@/sanity.types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import { useRef, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import { ImageSlider } from "./ImageSlider";
-import { urlFor } from "@/sanity/lib/image";
+import { ProductCard } from "./ProductCard";
 
 export const BestSellers = ({ products }: { products: Product[] }) => {
   const sliderRef = useRef<Slider | null>(null);
@@ -69,37 +67,7 @@ export const BestSellers = ({ products }: { products: Product[] }) => {
         <Slider ref={sliderRef} {...outerSettings}>
           {products.map((product) => (
             <div className="px-2" key={product._id}>
-              <a
-                href={`/products/${product.slug.current}`}
-                className="block group"
-              >
-                <div className="relative w-full bg-gray-200 overflow-hidden aspect-[0.7] min-h-[300px]">
-                  {product.images && product.images.length > 1 ? (
-                    <ImageSlider
-                      images={product.images}
-                      productName={product.name}
-                    />
-                  ) : (
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={urlFor(product.images[0]).url()}
-                        alt={product.name}
-                        width={500}
-                        height={500}
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                </div>
-                <div className="text-center mt-3 px-2 pb-4">
-                  <h3 className="text-base font-medium truncate">
-                    {product.name}
-                  </h3>
-                  <p className="font-semibold text-lg">
-                    Rs. {product.price.toFixed(2)}
-                  </p>
-                </div>
-              </a>
+              <ProductCard product={product} />
             </div>
           ))}
         </Slider>

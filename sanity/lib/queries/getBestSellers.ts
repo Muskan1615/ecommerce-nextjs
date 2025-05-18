@@ -1,6 +1,6 @@
+import { Product } from "@/sanity.types";
 import { groq } from "next-sanity";
-import { client } from "./client";
-import { Product } from "@/type";
+import { client } from "../client";
 
 export const getBestSellers = async (): Promise<Product[]> => {
   const query = groq`

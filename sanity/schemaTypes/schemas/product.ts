@@ -79,12 +79,13 @@ export const product = defineType({
       type: "string",
       options: {
         list: [
-          { title: "Tshirt", value: "tshirt" },
-          { title: "Jacket", value: "jacket" },
-          { title: "Pants", value: "pants" },
-          { title: "Hoodie", value: "hoodie" },
-          { title: "Short", value: "short" },
-          { title: "Others", value: "others" },
+          { title: "Tshirts", value: "tshirts" },
+          { title: "Shirts", value: "shirts" },
+          { title: "Jackets", value: "jackets" },
+          { title: "Bottoms", value: "bottoms" },
+          { title: "Hoodies", value: "hoodies" },
+          { title: "Vests", value: "vests" },
+          { title: "Caps", value: "caps" },
         ],
       },
     }),
@@ -95,6 +96,27 @@ export const product = defineType({
       initialValue: false,
       description: "Mark this product as a best seller to show on homepage",
     }),
+    defineField({
+      name: "sizes",
+      title: "Sizes",
+      type: "array",
+      of: [
+        {
+          type: "string",
+          options: {
+            list: [
+              { title: "XS", value: "XS" },
+              { title: "S", value: "S" },
+              { title: "M", value: "M" },
+              { title: "L", value: "L" },
+              { title: "XL", value: "XL" },
+              { title: "XXL", value: "XXL" },
+            ],
+          },
+        },
+      ],
+      validation: (Rule) => Rule.required().min(1),
+    }),
   ],
   preview: {
     select: {
@@ -104,10 +126,10 @@ export const product = defineType({
     },
     prepare(selection) {
       const { title, subtitle, media } = selection;
-      const image = media && media[0];
+      const image = media?.[0];
       return {
         title: title,
-        subtitle: `$${subtitle}`,
+        subtitle: `Rs.${subtitle}`,
         media: image,
       };
     },

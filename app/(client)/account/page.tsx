@@ -1,7 +1,7 @@
-import { currentUser } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
 import { SignOutButton } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs/server";
 import { ArrowUpRight, LogOut } from "lucide-react";
+import { redirect } from "next/navigation";
 
 export default async function AccountPage() {
   const user = await currentUser();
