@@ -2,7 +2,7 @@
 
 import { Text } from "lucide-react";
 import { useState } from "react";
-import { Sidebar } from "./SideBar";
+import { Sidebar } from "./Sidebar";
 
 export const SideMenu = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
