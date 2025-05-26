@@ -8,12 +8,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 
-interface SideBarProps {
+interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-export const SideBar: FC<SideBarProps> = ({ isOpen, onClose }) => {
+export const Sidebar: FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
   const [categoryOpen, setCategoryOpen] = useState(false);
 
