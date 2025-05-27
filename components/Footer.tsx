@@ -8,12 +8,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <p className="text-sm font-bold uppercase mb-4">
-              Chapter 2 Clothing
+              LA7 Clothing
             </p>
             <p className="text-sm text-neutral-700 leading-relaxed">
               In the silence, your outfit roars. It tells your story, whispers
               your secrets, and shouts your dreams. <br />
-              This is CHAPTER 2. This is your beginning. Every thread is a
+              This is LA7. This is your beginning. Every thread is a
               lesson learned, every seam a step taken. What you wear today isn’t
               just fabric—it’s your past victories, your present hustle, your
               future ambition.

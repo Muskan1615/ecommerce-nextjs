@@ -7,7 +7,7 @@ export const BrandStorySection = () => {
         </h2>
         <p className="leading-relaxed max-w-7xl mx-auto mb-8">
           In the silence, your outfit roars. It tells your story, whispers your
-          secrets, and shouts your dreams. This is CHAPTER 2. This is your
+          secrets, and shouts your dreams. This is LA7. This is your
           beginning. Every thread is a lesson learned, every seam a step taken.
           What you wear today isn’t just fabric—it’s your past victories, your
           present hustle, your future ambition.
