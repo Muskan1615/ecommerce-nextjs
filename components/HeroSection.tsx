@@ -41,6 +41,7 @@ export const Hero = () => {
 
   useEffect(() => {
     getHeroSectionSlides().then((fetchedSlides) => {
+      console.log("Fetched slides:", fetchedSlides);
       if (fetchedSlides?.length) {
         setSlides(fetchedSlides);
       }
