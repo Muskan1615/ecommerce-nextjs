@@ -1,8 +1,10 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { getFaviconLogo } from "@/sanity/lib/queries/getFaviconLogo";
 import { ClerkProvider } from "@clerk/nextjs";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import localFont from "next/font/local";
+import { ReactNode } from "react";
 import "../globals.css";
 
 const roboto = localFont({
@@ -11,16 +13,23 @@ const roboto = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "LA7",
-  description: "Ecommerce app",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const faviconUrl = await getFaviconLogo();
+
+  return {
+    title: "LA7",
+    description: "Ecommerce app",
+    icons: faviconUrl
+      ? {
+          icon: [{ url: faviconUrl, type: "image/png" }],
+        }
+      : undefined,
+  };
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: ReactNode }>) {
   return (
     <ClerkProvider>
       <html lang="en">
