@@ -68,6 +68,30 @@ export type Geopoint = {
   alt?: number;
 };
 
+export type Logo = {
+  _id: string;
+  _type: "logo";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  variant?: "light" | "dark" | "mobile" | "favicon" | "footer";
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  isDefault?: boolean;
+};
+
 export type HeroSection = {
   _id: string;
   _type: "heroSection";
@@ -300,5 +324,75 @@ export type CloudinaryAssetContext = {
   custom?: CloudinaryAssetContextCustom;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | HeroSection | PromotionCampaign | PromotionCode | Product | ProductCategory | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | CloudinaryAssetContextCustom | CloudinaryAssetDerived | CloudinaryAsset | CloudinaryAssetContext;
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Logo | HeroSection | PromotionCampaign | PromotionCode | Product | ProductCategory | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug | CloudinaryAssetContextCustom | CloudinaryAssetDerived | CloudinaryAsset | CloudinaryAssetContext;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./sanity/lib/queries/getBestSellers.ts
+// Variable: query
+// Query: *[_type == "product" && bestSeller == true] | order(_createdAt desc)[0...8]{      _id,      name,      slug,      price,      discount,      intro,      description,      images    }
+export type QueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  price: number | null;
+  discount: number | null;
+  intro: string | null;
+  description: string | null;
+  images: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+}>;
+
+// Source: ./sanity/lib/queries/getProductsByCategorySlug.ts
+// Variable: categoryQuery
+// Query: *[_type == "productCategory" && slug.current == $slug][0]{ _id, title, "slug": slug.current }
+export type CategoryQueryResult = {
+  _id: string;
+  title: string | null;
+  slug: string | null;
+} | null;
+// Variable: productsQuery
+// Query: *[_type == "product" && references($categoryId)]{      _id,      name,      slug,      price,      discount,      intro,      description,      images,      bestSeller,      status    }
+export type ProductsQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  price: number | null;
+  discount: number | null;
+  intro: string | null;
+  description: string | null;
+  images: Array<{
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    _key: string;
+  }> | null;
+  bestSeller: boolean | null;
+  status: "hot" | "new" | "sale" | null;
+}>;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    "\n    *[_type == \"product\" && bestSeller == true] | order(_createdAt desc)[0...8]{\n      _id,\n      name,\n      slug,\n      price,\n      discount,\n      intro,\n      description,\n      images\n    }\n  ": QueryResult;
+    "*[_type == \"productCategory\" && slug.current == $slug][0]{ _id, title, \"slug\": slug.current }": CategoryQueryResult;
+    "\n    *[_type == \"product\" && references($categoryId)]{\n      _id,\n      name,\n      slug,\n      price,\n      discount,\n      intro,\n      description,\n      images,\n      bestSeller,\n      status\n    }\n  ": ProductsQueryResult;
+  }
+}

@@ -12,7 +12,7 @@ const roboto = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Chapter2",
+  title: "LA7",
   description: "Ecommerce app",
 };
 
